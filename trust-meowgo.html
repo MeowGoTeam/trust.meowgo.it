@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4efe6">
+  <meta name="description" content="Centro di fiducia MeowGo: informazioni sulla protezione degli account, comunicazioni ufficiali e aggiornamenti del servizio.">
+  <title>Trust Center — MeowGo</title>
+  <style>
+    :root{
+      --paper:#f4efe6;--white:#fff;--ink:#4a2c11;--body:#5c4a3d;
+      --muted:#8c7b6e;--orange:#d35400;--line:#eae3d2;--soft:#fcfaf7;
+      --green:#247747;--green-bg:#edf7ef;--shadow:0 16px 45px rgba(74,44,17,.07);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Verdana,Geneva,sans-serif;line-height:1.65}
+    a{color:var(--orange);text-underline-offset:3px}
+    a:focus-visible,button:focus-visible{outline:3px solid #e9a16d;outline-offset:3px}
+    .wrap{width:min(1060px,calc(100% - 32px));margin:auto}
+    header{padding:22px 0}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:2px;font-size:24px;color:var(--orange);text-decoration:none}
+    .navlink{font-size:13px;font-weight:700;text-decoration:none}
+    .hero{padding:52px 0 30px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #f0d5c3;background:#fff8f2;color:#a94300;border-radius:999px;padding:7px 12px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-family:Arial,Helvetica,sans-serif;font-size:clamp(36px,6vw,62px);line-height:1.04;letter-spacing:-2px;max-width:760px;margin:20px 0 18px}
+    h1 span{color:var(--orange)}
+    .lead{font-size:17px;line-height:1.8;color:var(--body);max-width:730px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}
+    .btn{display:inline-flex;justify-content:center;align-items:center;padding:13px 19px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:800;border:1px solid var(--line)}
+    .btn-primary{background:var(--orange);color:#fff;border-color:var(--orange);box-shadow:0 5px 14px rgba(211,84,0,.2)}
+    .btn-secondary{background:#fff;color:var(--ink)}
+    .notice{margin:16px 0 34px;background:#fff8f1;border:1px solid #f0d8c5;border-radius:16px;padding:16px 18px;color:#71421f;font-size:13px}
+    .notice strong{color:#a94300}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0 44px}
+    .card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:var(--shadow)}
+    .icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:#fff1e6;color:var(--orange);font-size:21px;margin-bottom:17px}
+    h2{font-family:Arial,Helvetica,sans-serif;font-size:clamp(25px,3vw,34px);letter-spacing:-.7px;margin-bottom:12px}
+    h3{font-family:Arial,Helvetica,sans-serif;font-size:17px;margin-bottom:9px}
+    .card p,.section-copy{font-size:13px;color:var(--body);line-height:1.85;margin-bottom:0}
+    section{padding:20px 0 38px}
+    .section-head{max-width:700px;margin-bottom:22px}
+    .section-head p{color:var(--body);font-size:14px;line-height:1.8}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .checklist{list-style:none;padding:0;margin:14px 0 0}
+    .checklist li{position:relative;padding:10px 0 10px 28px;border-bottom:1px solid #f1ece4;font-size:13px;color:var(--body)}
+    .checklist li:last-child{border-bottom:0}
+    .checklist li:before{content:"✓";position:absolute;left:0;top:10px;color:var(--green);font-weight:900}
+    .warning{background:#fff8f1;border-color:#f0d8c5}
+    .warning .icon{background:#fce7d7}
+    .warning .checklist li:before{content:"!";color:var(--orange)}
+
+    .work-status{margin:18px 0 24px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+    .status-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .status-label{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+    .status-percent{font-family:Arial,Helvetica,sans-serif;font-size:28px;font-weight:900;color:var(--orange);line-height:1}
+    .status-track{height:12px;background:#f0e8dc;border-radius:999px;overflow:hidden;margin:18px 0 10px}
+    .status-fill{height:100%;width:0;background:linear-gradient(90deg,#d35400,#f2a365);border-radius:999px;transition:width .8s ease}
+    .status-scale{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--muted)}
+    .status-copy{font-size:13px;color:var(--body);line-height:1.8;margin:14px 0 0}
+    .status-caveat{margin-top:14px;padding:12px 14px;background:#fff8f1;border:1px solid #f0d8c5;border-radius:12px;color:#71421f;font-size:12px;line-height:1.7}
+    .status-caveat strong{color:#a94300}
+
+    .timeline{display:grid;gap:12px}
+    .timeline-item{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:17px 0;border-bottom:1px solid var(--line)}
+    .timeline-item:last-child{border-bottom:0}
+    .date{font-size:11px;color:var(--muted);font-weight:700;padding-top:3px}
+    .timeline-item p{font-size:13px;color:var(--body);margin:0}
+    .pill{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:#f4efe6;color:#775d47;margin-bottom:7px}
+    .contact{background:#4a2c11;color:#fff;border-radius:22px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .contact h2{font-size:27px;margin-bottom:8px}
+    .contact p{color:#f0dfce;font-size:13px;margin-bottom:0}
+    .contact .btn{background:#fff;color:var(--orange);border-color:#fff;white-space:nowrap}
+    footer{padding:28px 0 40px;text-align:center;color:var(--muted);font-size:11px}
+    footer p{margin:8px 0}
+    footer a{color:var(--muted)}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}.hero{padding-top:30px}.contact{align-items:flex-start;flex-direction:column}.timeline-item{grid-template-columns:1fr;gap:3px}.lead{font-size:15px}.card{padding:20px}}
+    @media(max-width:520px){.work-status{padding:19px}.status-percent{font-size:24px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.status-fill{transition:none}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="https://meowgo.it" aria-label="MeowGo — homepage">MEOWGO</a>
+    <a class="navlink" href="https://meowgo.it">← Torna a meowgo.it</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" aria-labelledby="hero-title">
+    <span class="eyebrow">🛡️ Centro di fiducia ufficiale</span>
+    <h1 id="hero-title">Lavori in corso su MeowGo</h1>
+    <p class="lead">Benvenuto nel centro di fiducia di MeowGo. Qui raccogliamo indicazioni utili per proteggere il tuo account, riconoscere le comunicazioni ufficiali e restare informato sugli aggiornamenti della piattaforma.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#account">Proteggi il tuo account ↗</a>
+      <a class="btn btn-secondary" href="#aggiornamenti">Leggi gli aggiornamenti</a>
+    </div>
+  </section>
+
+  
+
+  <div class="grid" aria-label="Principi del centro di fiducia">
+    <article class="card">
+      <div class="icon" aria-hidden="true">🔐</div>
+      <h3>Protezione degli account</h3>
+      <p>Adotta buone pratiche per mantenere al sicuro le credenziali e controlla sempre che le istruzioni provengano dai canali ufficiali.</p>
+    </article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">📣</div>
+      <h3>Comunicazioni chiare</h3>
+      <p>Gli avvisi ufficiali spiegano cosa sta succedendo, quali funzionalità possono essere coinvolte e dove trovare ulteriori informazioni.</p>
+    </article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">🧰</div>
+      <h3>Affidabilità del servizio</h3>
+      <p>Gli interventi tecnici possono richiedere manutenzioni temporanee. Quando necessario, comunicheremo gli aggiornamenti disponibili.</p>
+    </article>
+  </div>
+
+  <section id="account" aria-labelledby="account-title">
+    <div class="section-head">
+      <h2 id="account-title">Come proteggere il tuo account</h2>
+      <p>Piccole precauzioni aiutano a ridurre il rischio di accessi non autorizzati.</p>
+    </div>
+    <div class="split">
+      <article class="card">
+        <div class="icon" aria-hidden="true">✓</div>
+        <h3>Buone pratiche</h3>
+        <ul class="checklist">
+          <li>Usa una password lunga e unica, non riutilizzata su altri servizi.</li>
+          <li>Accedi digitando direttamente <strong>meowgo.it</strong> nel browser.</li>
+          <li>Esci dal tuo account se utilizzi un dispositivo condiviso.</li>
+          <li>In caso di avviso ufficiale, segui le istruzioni pubblicate sul sito.</li>
+        </ul>
+      </article>
+      <article class="card warning">
+        <div class="icon" aria-hidden="true">!</div>
+        <h3>Attenzione ai messaggi sospetti</h3>
+        <ul class="checklist">
+          <li>Non condividere mai la tua password via email o chat.</li>
+          <li>Non comunicare codici di verifica a persone che te li chiedono.</li>
+          <li>Diffida di link inattesi che richiedono credenziali o dati personali.</li>
+          <li>Se hai dubbi, contatta il supporto ufficiale prima di agire.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="comunicazioni" aria-labelledby="comunicazioni-title">
+    <div class="section-head">
+      <h2 id="comunicazioni-title">Come riconoscere le comunicazioni ufficiali</h2>
+      <p>Per verificare un avviso, non basarti soltanto sul logo o sul nome del mittente: controlla anche il dominio e, quando possibile, raggiungi il sito digitando l'indirizzo manualmente.</p>
+    </div>
+    <article class="card">
+      <h3>Canali di riferimento</h3>
+      <ul class="checklist">
+        <li><strong>Sito ufficiale:</strong> <a href="https://meowgo.it">https://meowgo.it</a></li>
+        <li><strong>Supporto:</strong> <a href="mailto:team@meowgo.it">team@meowgo.it</a></li>
+        <li><strong>Termini di Servizio:</strong> <a href="https://meowgo.it/termini">meowgo.it/termini</a></li>
+        <li><strong>Privacy Policy:</strong> <a href="https://meowgo.it/privacy">meowgo.it/privacy</a></li>
+      </ul>
+      <p class="section-copy" style="margin-top:14px">Non inviare mai la password al supporto. Se ricevi una richiesta insolita, verifica prima che sia autentica.</p>
+    </article>
+  </section>
+
+  <section id="aggiornamenti" aria-labelledby="aggiornamenti-title">
+    <div class="section-head">
+      <h2 id="aggiornamenti-title">Aggiornamenti del servizio</h2>
+      <p>In questa sezione verranno riportati gli avvisi confermati dal team, con eventuali aggiornamenti e indicazioni per gli utenti.</p>
+    </div>
+    <article class="work-status" aria-labelledby="work-status-title">
+      <div class="status-top">
+        <div>
+          <div class="status-label">Stato dei lavori</div>
+          <h3 id="work-status-title" style="margin:8px 0 0">Lavori in corso</h3>
+        </div>
+        <div class="status-percent" id="status-percent">—</div>
+      </div>
+      <div class="status-track" role="progressbar" aria-label="Indicatore generale del periodo di aggiornamento" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="status-progress">
+        <div class="status-fill" id="status-fill"></div>
+      </div>
+      <div class="status-scale"><span>16 ottobre 2026</span><span>25 dicembre 2026</span></div>
+      <p class="status-copy">Sono in corso attività di manutenzione e miglioramento di MeowGo. Stiamo lavorando per rendere l'esperienza più stabile; per il momento non condividiamo ulteriori dettagli tecnici.</p>
+      <div class="status-caveat"><strong>Possibili interruzioni temporanee:</strong> durante questo periodo alcune parti del servizio potrebbero non funzionare temporaneamente. Ci scusiamo per eventuali disagi e vi ringraziamo per la pazienza.</div>
+      <p class="status-copy" style="font-size:11px;color:var(--muted)">La barra mostra l'avanzamento indicativo del periodo di lavoro, non una percentuale tecnica delle attività completate.</p>
+    </article>
+
+    <article class="card">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="date">Comunicazioni</div>
+          <div>
+            <span class="pill">Informazioni</span>
+            <h3>Consulta gli avvisi ufficiali</h3>
+            <p>Per il momento, fai riferimento alle comunicazioni ricevute dal team MeowGo e al sito ufficiale. Non viene mostrato uno stato operativo in tempo reale perché questo richiede un sistema di monitoraggio collegato.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">Prossimi aggiornamenti</div>
+          <div>
+            <span class="pill">Da pubblicare</span>
+            </article>
+  </section>
+
+  <section aria-label="Contatta il supporto">
+    <div class="contact">
+      <div>
+        <h2>Hai un dubbio?</h2>
+        <p>Per domande o per segnalare una comunicazione sospetta, contatta il team MeowGo.</p>
+      </div>
+      <a class="btn" href="mailto:team@meowgo.it?subject=Centro%20di%20fiducia%20MeowGo">Contatta il supporto ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong style="color:#d35400;letter-spacing:1px">MEOWGO</strong></p>
+    <p>Il mondo dei gatti, in un solo posto.</p>
+    <p><a href="https://meowgo.it/termini">Termini di Servizio</a> &nbsp;|&nbsp; <a href="https://meowgo.it/privacy">Privacy Policy</a> &nbsp;|&nbsp; <a href="mailto:team@meowgo.it">Supporto</a></p>
+    <p>© MeowGo — Centro di fiducia</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const start = new Date('2026-10-16T00:00:00');
+    const end = new Date('2026-12-25T23:59:59');
+    const now = new Date();
+    const total = end.getTime() - start.getTime();
+    const elapsed = now.getTime() - start.getTime();
+    const percent = Math.max(0, Math.min(100, Math.round((elapsed / total) * 100)));
+    const fill = document.getElementById('status-fill');
+    const label = document.getElementById('status-percent');
+    const progress = document.getElementById('status-progress');
+    if (fill && label && progress) {
+      fill.style.width = percent + '%';
+      label.textContent = percent + '%';
+      progress.setAttribute('aria-valuenow', String(percent));
+    }
+  })();
+</script>
+
+</body>
+</html>
